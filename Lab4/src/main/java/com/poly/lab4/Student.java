@@ -1,53 +1,101 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
 
 package com.poly.lab4;
 
 import java.util.Scanner;
 
-
+/**
+ *
+ * @author DELL
+ */
 public class Student {
+    private String id;
+    private String name;
+    private int age;
+    private double gpa;
 
-    public String id;
-    public String name;
-    public int age;
-    public double gpa;
+    public Student() {
+    }
+    
+    public Student(String id, String name, int age, double gpa) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gpa = gpa;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        if (age < 0)
+            System.out.println("Tuoi khong hop le");
+        else 
+            this.age = age;
+    }
+
+    public void setGpa(double gpa) {
+        if (gpa < 0 || gpa > 10)
+            System.out.println("GPA khong hop le");
+        else 
+            this.gpa = gpa;
+    }
+    
     public void input(Scanner sc) {
-
-        System.out.println("Nhap ID:");
-        id = sc.nextLine();
-
-        System.out.println("Nhap Ho Va Ten:");
-        name = sc.nextLine();
-
-        System.out.println("Nhap Tuoi:");
-        age = sc.nextInt();
-
-        System.out.println("Nhap Diem GPA:");
-        gpa = sc.nextDouble();
-
+        
+        System.out.print("Nhap MSSV: ");
+        this.id = sc.nextLine();
+        
+        System.out.print("Nhap ho ten: ");
+        this.name = sc.nextLine();
+        
+        System.out.print("Nhap tuoi: ");
+        this.age = sc.nextInt();
+        
+        System.out.print("Nhap diem trung binh: ");
+        this.gpa = sc.nextDouble();
         sc.nextLine();
     }
-
-    public String rank() {
-
-        if (gpa >= 9.0) {
-            return "Excellent";
-        } else if (gpa >= 8.0) {
-            return "Very Good";
-        } else if (gpa >= 6.5) {
-            return "Good";
-        } else if (gpa >= 5.0) {
-            return "Average";
-        } else {
-            return "Fail";
-        }
-    }
-
+    
+    
     public void output() {
-
-        System.out.printf(
-            "ID: %s | Ho Ten: %s | Tuoi: %d | GPA: %.2f | Xep Loai: %s%n",
-            id, name, age, gpa, rank()
-        );
+        System.out.println("ID: " + this.id + " | Ho ten: " + this.name + " | Tuoi: " + this.age + " | GPA: " + this.gpa + " | Xep loai: " + rank());
+    }
+    
+    
+    public String rank() {
+        if (this.gpa >= 9.0)
+            return "Excellent";
+        else if (this.gpa >= 8.0)
+            return "Very Good";
+        else if (this.gpa >= 6.5)
+            return "Good";
+        else if (this.gpa >= 5.0)
+            return "Average";
+        else 
+            return "Fail";
     }
 }
